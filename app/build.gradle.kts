@@ -46,6 +46,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
     //coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0-RC")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0-RC")
@@ -69,4 +70,7 @@ dependencies {
     implementation("androidx.room:room-ktx:$room_version")
     // for kapt (this is an annotation processor )
     kapt("androidx.room:room-compiler:$room_version")
+    // worker
+    val work_version = "2.9.0"
+    implementation("androidx.work:work-runtime:$work_version")
 }
