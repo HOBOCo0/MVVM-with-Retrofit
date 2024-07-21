@@ -2,6 +2,7 @@ package com.example.mvvm_rrtrofit_room
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -25,13 +26,13 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val quoteService = RetrofitHelper.getInstance().create(QuoteService::class.java)
-        val repository = QuotesRepository(quoteService)
+
+        val repository = (application as QuoteApplication).quotesRepository
 
         mainViewModel = ViewModelProvider(this,MainViewModelFactory(repository)).get(MainViewModel::class.java)
 
         mainViewModel.quotes.observe(this){
-            Log.d("Aman Srivastava",it.quotes.toString())
+            Toast.makeText(this@MainActivity,it.quotes.size.toString(),Toast.LENGTH_SHORT).show()
         }
     }
 }
